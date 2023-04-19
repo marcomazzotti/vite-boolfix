@@ -1,6 +1,15 @@
 <script>
+import {store} from "../store";
 export default{
-  name: "AppHeader"
+  name: "AppHeader",
+  emits: [
+    "search"
+  ],
+  data(){
+    return{
+      store
+    }
+  }
 }
 </script>
 
@@ -9,8 +18,8 @@ export default{
     <div class="ms-container">
       <h1>BOOLFLIX</h1>
       <div class="ms-search">
-        <input type="text" placeholder="Titolo">
-        <button>Cerca</button>
+        <input type="text" placeholder="Titolo" v-model.trim="store.userSearch">
+        <button @click="$emit('search')">Cerca</button>
       </div>
     </div>
   </header>

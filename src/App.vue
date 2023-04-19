@@ -9,12 +9,38 @@ export default{
             store
         };
     },
-    components: { AppHeader, AppMain }
+    components: { AppHeader, AppMain },
+    methods: {
+    handleSearch(){
+      if (this.store.userSearch === ""){
+        console.log("ERRORE");
+      } else {
+        this.getFilm();
+        this.store.userSearch = "";
+      }
+    },
+    getFilm() {
+      axios
+        .get(this.store.urlFilm, {
+          params: {
+            api_key: this.store.apiKey,
+            query: this.store.userSearch
+          }
+        })
+        .then((resp) => {
+          this.store.filmArray = resp.data.results;
+          console.log(resp);
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  }
 }
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @search="handleSearch"/>
   <AppMain />
 </template>
 
