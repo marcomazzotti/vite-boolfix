@@ -16,6 +16,7 @@ export default{
         console.log("ERRORE");
       } else {
         this.getFilm();
+        this.getSeries();
         this.store.userSearch = "";
       }
     },
@@ -29,6 +30,22 @@ export default{
         })
         .then((resp) => {
           this.store.filmArray = resp.data.results;
+          console.log(resp);
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    },
+    getSeries(){
+      axios
+        .get(this.store.urlSeries, {
+          params: {
+            api_key: this.store.apiKey,
+            query: this.store.userSearch
+          }
+        })
+        .then((resp) => {
+          this.store.seriesArray = resp.data.results;
           console.log(resp);
         })
         .catch(error => {
