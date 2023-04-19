@@ -1,16 +1,21 @@
 <script>
+import axios from "axios";
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
 import {store} from "./store"
 export default{
-  data(){
-    return{
-      store
-    }
-  }
+    data() {
+        return {
+            store
+        };
+    },
+    components: { AppHeader, AppMain }
 }
 </script>
 
 <template>
-  <h1>BOOLFIX</h1>
+  <AppHeader />
+  <AppMain />
 </template>
 
 <style lang="scss">
