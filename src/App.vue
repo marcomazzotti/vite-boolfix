@@ -51,6 +51,9 @@ export default{
         .catch(error => {
           console.error(error)
         })
+    },
+    getVote(){
+      return parseInt(this.item.vote_average / 2)
     }
   }
 }

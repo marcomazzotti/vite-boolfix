@@ -1,8 +1,12 @@
 <script>
-import {store} from "../store"
+import {store} from "../store";
+import LangFlag from "vue-lang-code-flags";
 
 export default {
   name: "AppMain",
+  components:{
+    LangFlag
+  },
   data(){
     return{
       store
@@ -24,12 +28,9 @@ export default {
           <div class="ms-film-info">
             <p><span>Titolo: </span>{{ item.title }}</p>
             <p><span>Titolo Originale: </span>{{ item.original_title }}</p>
-            <img v-if="item.original_language === 'it'" src="../assets/img/Flag_of_Italy.png" class="ms-flag" alt="">
-            <img v-else-if="item.original_language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom.png" class="ms-flag" alt="">
-            <img v-else-if="item.original_language === 'es'" src="../assets/img/Flag_of_the_United_Kingdom.png" class="ms-flag" alt="">
-            <p v-else><span>Lingua: </span>{{ item.original_language }}</p>
+            <span>Lingua: </span><lang-flag v-if="item.original_language" :iso="`${item.original_language}`"/>
             <p><span>Voto: </span>{{ item.vote_average }}</p>
-            <p><span>Overview: </span>{{ item.overview }}</p>
+            <p><span class="overview">Descrizione: </span>{{ item.overview }}</p>
           </div>
         </div>
       </div>
@@ -45,12 +46,9 @@ export default {
           <div class="ms-film-info">
             <p><span>Titolo: </span>{{ item.name }}</p>
             <p><span>Titolo Originale: </span>{{ item.original_name }}</p>
-            <img v-if="item.original_language === 'it'" src="../assets/img/Flag_of_Italy.png" class="ms-flag" alt="">
-            <img v-else-if="item.original_language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom.png" class="ms-flag" alt="">
-            <img v-else-if="item.original_language === 'es'" src="../assets/img/Flag_of_the_United_Kingdom.png" class="ms-flag" alt="">
-            <p v-else><span>Lingua: </span>{{ item.original_language }}</p>
+            <span>Lingua: </span><lang-flag v-if="item.original_language" :iso="`${item.original_language}`"/>
             <p><span>Voto: </span>{{ item.vote_average }}</p>
-            <p><span>Overview: </span>{{ item.overview }}</p>
+            <!-- <p><span>Descrizione: </span>{{ item.overview }}</p> -->
           </div>
         </div>
       </div>
@@ -64,40 +62,24 @@ export default {
   color: white;
   height: 100vh;
   overflow-y: auto;
-  
   .ms-card{
-    width: calc(100% / 5 - 50px);
-    margin-bottom: 50px;
-    border: 1px solid grey;
-    padding: 30px;
-    margin: 10px;
+    width: calc(100% / 6);
+    padding: 1.5rem;
+    border: 1px solid white;
+    margin: 20px;
     .ms-film-img img{
       width: 100%;
     }
+    .ms-film-info{
+      width: 100%;
+      display: none;
+    }
     &:hover .ms-film-info{
-    display: block;
-    overflow-y: auto;
+      display: block;
     }
     &:hover .ms-film-img{
-    display: none;
+      display: none;
     }
-    .ms-flag{
-    width: 50px;
-    }
-    .ms-film-info{
-    display: none;
-    overflow-y: auto;
-    max-height: 500px;
-    span{
-      font-weight:bold;
-    }
-    img{
-      width: 50px;
-    }
-  }
-  }
-  p{
-    margin: 1rem 0;
   }
 }
 
