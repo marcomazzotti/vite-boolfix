@@ -18,7 +18,7 @@ export default{
     <div class="ms-container">
       <h1>BOOLFLIX</h1>
       <div class="ms-search">
-        <input type="text" placeholder="Titolo" v-model.trim="store.userSearch">
+        <input type="text" placeholder="Inizia la ricerca" v-model.trim="store.userSearch">
         <button @click="$emit('search')">Cerca</button>
       </div>
     </div>
@@ -29,7 +29,9 @@ export default{
   header{
     background-color: black;
     height: 80px;
+    width: 100%;
     padding: 0 1.5rem;
+    position: fixed;
 
     .ms-container{
     display: flex;
