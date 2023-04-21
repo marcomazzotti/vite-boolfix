@@ -62,7 +62,7 @@ export default {
               </p>
               <p>
                 <span v-for="i in store.stars">
-                  <i :class="[(i <= Math.floor(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
+                  <i :class="[(i <= Math.ceil(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
                 </span>
               </p>
               <!-- <p><span>Descrizione: </span>{{ item.overview }}</p> -->
