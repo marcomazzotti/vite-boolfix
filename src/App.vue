@@ -30,7 +30,6 @@ export default{
         })
         .then((resp) => {
           this.store.filmArray = resp.data.results;
-          console.log(resp);
         })
         .catch(error => {
           console.error(error)

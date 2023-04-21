@@ -36,7 +36,7 @@ export default {
                 <i :class="[(i <= Math.floor(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
               </span>
             </p>
-            <!-- <p><span class="overview">Descrizione: </span>{{ item.overview }}</p> -->
+            <p v-if="item.overview"><span>Descrizione:</span>{{ item.overview }}</p>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default {
                   <i :class="[(i <= Math.ceil(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
                 </span>
               </p>
-              <!-- <p><span>Descrizione: </span>{{ item.overview }}</p> -->
+              <p v-if="item.overview"><span>Descrizione:</span>{{ item.overview }}</p>
             </div>
           </div>
         </div>
@@ -89,9 +89,9 @@ export default {
       width: 100%;
     }
     .ms-film-info{
-      width: 100%;
-      height: 100%;
+      height: 350px;
       display: none;
+      overflow-y: hidden;
     }
     &:hover .ms-film-info{
       display: block;
