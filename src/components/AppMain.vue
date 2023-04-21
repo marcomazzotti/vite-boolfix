@@ -45,26 +45,28 @@ export default {
       <h2 class="py-4">TV SERIES</h2>
       <div class="d-flex flex-wrap">
         <div class="ms-card" v-for="item in store.seriesArray">
-          <div class="ms-film-img">
-            <img :src="`${store.urlImg}${item.poster_path}`" alt="">
-            <h4 v-if="!item.poster_path">IMMAGINE NON DISPONIBILE</h4>
-          </div>
-          <div class="ms-film-info">
-            <p><span>Titolo: </span>{{ item.name }}</p>
-            <p><span>Titolo Originale: </span>{{ item.original_name }}</p>
-            <p>
-              <span>Lingua: </span>
-              <img v-if="item.original_language === 'it'" src="../assets/img/Flag_of_Italy.png" alt="">
-              <img v-else-if="item.original_language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom.png" alt="">
-              <img v-else-if="item.original_language === 'es'" src="../assets/img/Flag_of_Spain.png" alt="">
-              <p v-else>{{ item.original_language }}</p>
-            </p>
-            <p>
-              <span v-for="i in store.stars">
-                <i :class="[(i <= Math.floor(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
-              </span>
-            </p>
-            <!-- <p><span>Descrizione: </span>{{ item.overview }}</p> -->
+          <div class="ms-card-wrapper">
+            <div class="ms-film-img">
+              <img :src="`${store.urlImg}${item.poster_path}`" alt="">
+              <h4 v-if="!item.poster_path">IMMAGINE NON DISPONIBILE</h4>
+            </div>
+            <div class="ms-film-info">
+              <p><span>Titolo: </span>{{ item.name }}</p>
+              <p><span>Titolo Originale: </span>{{ item.original_name }}</p>
+              <p>
+                <span>Lingua: </span>
+                <img v-if="item.original_language === 'it'" src="../assets/img/Flag_of_Italy.png" alt="">
+                <img v-else-if="item.original_language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom.png" alt="">
+                <img v-else-if="item.original_language === 'es'" src="../assets/img/Flag_of_Spain.png" alt="">
+                <p v-else>{{ item.original_language }}</p>
+              </p>
+              <p>
+                <span v-for="i in store.stars">
+                  <i :class="[(i <= Math.floor(item.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
+                </span>
+              </p>
+              <!-- <p><span>Descrizione: </span>{{ item.overview }}</p> -->
+            </div>
           </div>
         </div>
       </div>
@@ -108,5 +110,4 @@ export default {
     }
   }
 }
-
 </style>
